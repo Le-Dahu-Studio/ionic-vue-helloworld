@@ -1,0 +1,12 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "rules": {
+    "indentation": 4,
+    "max-nesting-depth": 10,
+    "selector-max-compound-selectors": 10,
+    "selector-no-qualifying-type": {
+        "ignore": "attribute"
+    },
+    "selector-max-id": 1
+  }
+}

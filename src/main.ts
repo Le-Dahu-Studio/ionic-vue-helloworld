@@ -22,7 +22,7 @@ import '@ionic/vue/css/flex-utils.css';
 import '@ionic/vue/css/display.css';
 
 /* Theme variables */
-import './theme/variables.css';
+import './theme/variable.css';
 
 import fr from './locales/fr.json';
 import en from './locales/en.json';
