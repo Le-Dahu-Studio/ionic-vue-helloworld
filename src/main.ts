@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router';
 
 import { IonicVue } from '@ionic/vue';
+import { createI18n } from 'vue-i18n';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
@@ -23,10 +24,24 @@ import '@ionic/vue/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+import fr from './locales/fr.json';
+import en from './locales/en.json';
+
+const i18n = createI18n({
+  legacy: false,
+  locale: 'fr',
+  messages: {
+    'fr': fr,
+    'en': en,
+  }
+})
+
+
 const app = createApp(App)
   .use(IonicVue)
+  .use(i18n)
   .use(router);
-  
+
 router.isReady().then(() => {
   app.mount('#app');
 });
