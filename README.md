@@ -4,6 +4,11 @@ A small PoC for ionic coupled with Vue
 
 i18n engine, git info, localstorage with capacitor, routing, helloworld
 
+## serve
+```
+ionic serve
+```
+
 ## build
 ```
 ionic build
