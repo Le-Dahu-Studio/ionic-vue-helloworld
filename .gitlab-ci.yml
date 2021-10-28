@@ -22,9 +22,7 @@ build_image:
 pages:
   stage: deploy
   script:
-      - docker cp cestquicegars:/app/dist/ dist
-  stage: deploy
-  script:
+    - docker cp cestquicegars:/app/dist/ dist
     - mkdir .public
     - cp -r dist/* .public
     - mv .public public
