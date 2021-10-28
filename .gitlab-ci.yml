@@ -3,10 +3,9 @@ default:
   services:
   - docker:dind
 
-before_script:
-  - docker info
-
 build_image:
+  before_script:
+  - docker info
   script:
     - docker build --target=build -t builder .
     - docker run builder --name "cestquicegars"
