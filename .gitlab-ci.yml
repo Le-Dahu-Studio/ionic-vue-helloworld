@@ -5,9 +5,7 @@ stages:
 
 default:
   stage: prepare
-  image: docker
-  services:
-  - docker:dind
+  image: docker:dind
   script:
     - cat /etc/os-release
     - ls /
