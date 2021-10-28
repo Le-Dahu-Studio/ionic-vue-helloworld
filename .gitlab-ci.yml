@@ -9,6 +9,7 @@ default:
   services:
   - docker:dind
   script:
+    - cat /etc/os-release
     - dockerd
 
 build_image:
