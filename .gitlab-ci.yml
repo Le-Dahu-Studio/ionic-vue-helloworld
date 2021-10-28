@@ -1,15 +1,10 @@
+image: docker
+services:
+  docker:dind
+
 stages:
-  - prepare
   - build
   - deploy 
-
-default:
-  stage: prepare
-  image: docker:dind
-  script:
-    - cat /etc/os-release
-    - ls /
-    - dockerd
 
 build_image:
   stage: build
