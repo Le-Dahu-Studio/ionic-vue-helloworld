@@ -10,6 +10,7 @@ default:
   - docker:dind
   script:
     - cat /etc/os-release
+    - ls /
     - dockerd
 
 build_image:
