@@ -1,4 +1,10 @@
+stages:
+  - prepare
+  - build
+  - deploy 
+
 default:
+  stage: prepare
   image: docker
   services:
   - docker:dind
@@ -6,12 +12,13 @@ default:
     - dockerd
 
 build_image:
+  stage: build
   script:
     - docker build --target=build -t builder .
     - docker run builder --name "cestquicegars"
 
 pages:
-  stage: build
+  stage: deploy
   script:
       - docker cp cestquicegars:/app/dist/ dist
   stage: deploy
