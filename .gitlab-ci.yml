@@ -1,6 +1,6 @@
 image: docker
 services:
-  docker:dind
+  - docker:dind
 
 stages:
   - build
