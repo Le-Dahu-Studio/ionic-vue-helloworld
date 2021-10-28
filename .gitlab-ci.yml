@@ -1,6 +1,6 @@
-image: docker
-services:
-  - docker:dind
+image: docker:19.03.13
+service:
+  - docker:19.03.13-dind
 
 stages:
   - build
