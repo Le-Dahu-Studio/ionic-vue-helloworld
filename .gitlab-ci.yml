@@ -1,6 +1,15 @@
 image: docker:19.03.13
+
+variables:
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_TLS_CERTDIR: ""
+
 services:
   - docker:19.03.13-dind
+  
+before_script:
+  - docker info
+
 
 stages:
   - build
