@@ -1,29 +1,22 @@
-image: docker:20-dind
-
-variables:
-  DOCKER_HOST: tcp://docker:2375
-  DOCKER_TLS_CERTDIR: ""
-services:
-  - name: docker:20-dind
-    alias: docker
-    # in our experience although you'd assume this would be sufficient, this did 
-    # nothing to prevent connection errors without `DOCKER_TLS_CERTDIR` being set 
-    # to an empty string, and I would call that beyond mildly infuriating.
-    command: ["--tls=false"]
-
-before_script:
-  - docker info
-
-
 stages:
   - build
-  - deploy 
 
-build_image:
+# Build and push the Docker image to the GitLab image registry
+# using Podman.
+podman-build:
   stage: build
+
+  image:
+    name: quay.io/podman/stable
+
   script:
-    - docker build --target=build -t builder .
-    - docker run builder --name "cestquicegars"
+    # GitLab has a built-in Docker image registry, whose
+    # parameters are set automatically. You can use some
+    # other Docker registry though by changing the login and
+    # image name.
+    - podman login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+    - podman build -t "$CI_REGISTRY_IMAGE:builder" .
+    - podman push "$CI_REGISTRY_IMAGE:builder"
 
 pages:
   stage: deploy
