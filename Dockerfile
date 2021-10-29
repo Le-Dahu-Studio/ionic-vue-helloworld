@@ -1,4 +1,4 @@
-FROM node:14-alpine as build
+FROM docker.io/node:14-alpine as build
 WORKDIR /app
 COPY package*.json /app/
 RUN npm install -g ionic
@@ -7,6 +7,6 @@ RUN npm install --include=dev
 COPY ./ /app/
 RUN npm run-script build
 
-FROM nginx:alpine as server
+FROM docker.io/nginx:alpine as server
 RUN rm -rf /usr/share/nginx/html/*
 COPY --from=build /app/dist/ /usr/share/nginx/html
