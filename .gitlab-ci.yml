@@ -18,13 +18,13 @@ podman-build:
     - podman build -t "$CI_REGISTRY_IMAGE:builder" .
     - podman push "$CI_REGISTRY_IMAGE:builder"
 
-pages:
-  stage: deploy
-  script:
-    - docker cp cestquicegars:/app/dist/ dist
-    - mkdir .public
-    - cp -r dist/* .public
-    - mv .public public
-  artifacts:
-    paths:
-      - public
+# pages:
+#   stage: deploy
+#   script:
+#     - docker cp cestquicegars:/app/dist/ dist
+#     - mkdir .public
+#     - cp -r dist/* .public
+#     - mv .public public
+#   artifacts:
+#     paths:
+#       - public
