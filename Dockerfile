@@ -6,7 +6,7 @@ COPY package*.json /app/
 #RUN npm install --include=dev
 COPY ./ /app/
 RUN mkdir dist
-echo "VITESSE" > dist/index.html
+RUN echo "VITESSE" > dist/index.html
 #RUN npm run-script build
 
 FROM docker.io/nginx:alpine as server
