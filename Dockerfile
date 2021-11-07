@@ -5,7 +5,7 @@ COPY package*.json /app/
 #RUN apk add --update --no-cache python3 make g++ git && ln -sf python3 /usr/bin/python
 #RUN npm install --include=dev
 COPY ./ /app/
-mkdir dist
+RUN mkdir dist
 echo "VITESSE" > dist/index.html
 #RUN npm run-script build
 
