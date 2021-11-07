@@ -9,6 +9,7 @@ RUN mkdir dist
 RUN echo "VITESSE" > dist/index.html
 #RUN npm run-script build
 
-FROM nginxinc/nginx-unprivileged  as server
+FROM docker.io/nginxinc/nginx-unprivileged as server
 # RUN rm -rf /usr/share/nginx/html/*
-COPY --from=build /app/dist/ /usr/share/nginx/html/dist
+USER 1000
+COPY --from=build /app/dist/ /usr/share/nginx/html/dist/
