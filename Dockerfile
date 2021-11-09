@@ -11,6 +11,6 @@ RUN echo "VITESSE" > dist/index.html
 
 FROM docker.io/nginxinc/nginx-unprivileged as server
 RUN echo "Bonjour"
-# RUN rm -rf /usr/share/nginx/html/*
+RUN rm -rf /usr/share/nginx/html/*
 USER 1000
-COPY --from=build /app/dist/ /usr/share/nginx/html/dist/
+COPY --from=build /app/dist/ /usr/share/nginx/html/
