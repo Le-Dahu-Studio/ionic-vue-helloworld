@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: registry.int.insight-you.com/insight-you/dev/hello-world-frontend
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
@@ -39,7 +39,7 @@ securityContext:
 
 service:
   type: ClusterIP
-  port: 80
+  port: 8080
 
 ingress:
   enabled: true #false
@@ -47,6 +47,8 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: nginx
     kubernetes.io/tls-acme: "true"
+    cert-manager.io/cluster-issuer: "cert-issuer-insight-you-prod"
+    acme.cert-manager.io/http01-ingress-class: "nginx"
   hosts:
     - host: web-app.dev.insight-you.com
       paths:
