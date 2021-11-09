@@ -10,7 +10,6 @@ RUN echo "VITESSE" > dist/index.html
 #RUN npm run-script build
 
 FROM docker.io/nginxinc/nginx-unprivileged as server
-RUN echo "Bonjour"
-# RUN rm -rf /usr/share/nginx/html/*
+COPY ./default.conf /etc/nginx/conf.d/default.conf
 USER 1000
-COPY --from=build /app/dist/ /usr/share/nginx/html/
+COPY --from=build /app/dist/ ~/www/
